@@ -1,0 +1,41 @@
+[ moleculetype ]
+;name            nrexcl
+CAR                  3
+
+[ atoms ]
+;   nr  type  resi  res  atom  cgnr     charge       mass
+     1    Cd      1   CAR     C    1     0.866206     12.00000 ; qtot  0.866  equiv. c_00
+     2    Od      1   CAR    O1    2    -0.770449     15.99492 ; qtot  0.096  equiv. o_00
+     3    OHd     1   CAR    O2    3    -0.642738     15.99492 ; qtot -0.547  equiv. oh_00
+     4    Od      1   CAR    O3    4    -0.770449     15.99492 ; qtot -1.317  equiv. o_00
+     5    HOd     1   CAR     H    5     0.317430      1.00782 ; qtot -1.000  equiv. ho_00
+
+[ bonds ]
+;   ai     aj    funct       r           k_r
+     1      2      1    1.2233e-01    5.4610e+05 ; c -o   
+     1      3      1    1.3450e-01    3.2058e+05 ; c -oh  
+     1      4      1    1.2237e-01    5.4610e+05 ; c -o   
+     3      5      1    9.3922e-02    4.7154e+05 ; ho-oh  
+
+[ pairs ]
+;   ai     aj    funct
+     2      5      1
+     4      5      1
+
+[ angles ]
+;   ai     aj     ak    funct     theta       k_theta
+     1      3      5      1    1.0065e+02    4.3179e+02 ; c -oh-ho 
+     2      1      3      1    1.1766e+02    9.6818e+02 ; o -c -oh 
+     2      1      4      1    1.2165e+02    9.9412e+02 ; o -c -o  
+     3      1      4      1    1.2069e+02    9.6818e+02 ; o -c -oh 
+
+[ dihedrals ]
+; propers
+;   ai     aj     ak     al    funct     C0         C1         C2         C3         C4         C5
+     2      1      3      5      3   27.19600   -7.94960  -19.24640   -0.00000    0.00000    0.00000 ; ho-oh-c -o   RB
+     4      1      3      5      3   27.19600   -7.94960  -19.24640   -0.00000    0.00000    0.00000 ; ho-oh-c -o   RB
+
+[ dihedrals ]
+; impropers
+;   ai     aj     ak     al    funct    phase     k_d      n
+     4      2      1      3      4     180.00    4.60240   2 ; X -o -c -o  

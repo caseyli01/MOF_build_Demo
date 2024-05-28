@@ -81,6 +81,8 @@ def top_gen(itp_file,middlelines,outtopname,input_res_num):
         + "\n"
         + '#include "../itp/K.itp"'
         + "\n"
+        + '#include "../itp/dicar.itp"'
+        + "\n"
         + "\n"
     ]
     sec3 = ["MOF_UIO66" + "\n" + "\n"]
