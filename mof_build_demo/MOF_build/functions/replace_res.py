@@ -1,8 +1,9 @@
 class replace_res():
-    def __init__(self,Agro,Bgro,res_num):
+    def __init__(self,Agro,Bgro,res_num,outputfilename):
         self.Agro = Agro
         self.Bgro = Bgro
         self.res_num = res_num
+        self.outputname = outputfilename
         self.Agro_total_atoms_num = None
         self.Agro_extract_res_atoms_num = None
         self.Agro_head = None
@@ -72,6 +73,6 @@ class replace_res():
                     line_left,
                 )
             newlines[i]=formatted_line
-        with open('replaced_gro.gro','w') as f:
+        with open(str(self.outputname)+".gro",'w') as f:
             f.writelines(newlines)
         print(str(self.Agro_extract_res_atoms_num)+" atoms in Agro file  \n"+str(self.Bgro_extract_res_atoms_num)+" atoms in Bgro file")

@@ -69,13 +69,13 @@ class MIL53tetra:
             self.x_scalar, self.y_scalar, self.z_scalar, dx, dy, dz, self.linker_pdb, self.O1_index, self.O2_index, self.O3_index, self.O4_index, points_c, outlinker
         )
         # NOTE:O1->O2//dy,O1->O3//dz
-        output('linker',outgro=False,outpdb=False,outxyz=True)
+        output(outlinker,outgro=False,outpdb=False,outxyz=True)
 
         """cut"""
         df_cut = get_term(
             self.cut_lib_pdb, self.x_num, self.y_num, self.z_num, self.x_scalar, self.y_scalar, self.z_scalar, group_A, group_B, outcut
         )
-        output('cut',outgro=False,outpdb=False,outxyz=True)
+        output(outcut,outgro=False,outpdb=False,outxyz=True)
 
         """all"""
         residues, res_count = fetch.reslist_resnum(
