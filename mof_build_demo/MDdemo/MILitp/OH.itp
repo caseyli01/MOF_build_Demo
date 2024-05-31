@@ -1,0 +1,11 @@
+[ moleculetype ]
+;name            nrexcl
+MOH                   3
+
+[ atoms ]
+;   nr  type  resi  res  atom  cgnr     charge       mass
+    1         O      1    MOH     O1      1 -1.18421900  16.000000   ; qtot -1.184219
+    2         HOX1   1    MOH     H1      2 0.18421900   1.008000   ; qtot -1.000000
+[ bonds ]
+;    ai     aj funct         c0         c1         c2         c3
+      1      2     1   0.09730 471536.800000
