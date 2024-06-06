@@ -154,6 +154,6 @@ class Frame:
             local_pdb, point_center, V1, axis1, V2, axis2
         )
         # q3 = rotate.calculate_q_rotation_with_axis_degree(axis2,np.pi)*rotate.calculate_q_rotation_with_axis_degree(axis3,np.pi)
-        print('new_node',new_node_A)
+
         return new_node_A
 
