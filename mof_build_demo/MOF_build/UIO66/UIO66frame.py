@@ -130,7 +130,7 @@ class Frame:
         solution_1_2, arr_1_2, solution_1_3, arr_1_3 = read.read_axis_from_lib(
             self.axis_lib
         )
-        local_pdb = read.pdb(self.local_pdb)
+        local_pdb = read.lib(self.local_pdb)
         axis1 = self.tdx  # ATTENTION
         axis2 = self.tdy
         # pre_process.get_axis2(solution_1_2,arr_1_2,solution_1_3,arr_1_3)
@@ -154,6 +154,6 @@ class Frame:
             local_pdb, point_center, V1, axis1, V2, axis2
         )
         # q3 = rotate.calculate_q_rotation_with_axis_degree(axis2,np.pi)*rotate.calculate_q_rotation_with_axis_degree(axis3,np.pi)
-
+        print('new_node',new_node_A)
         return new_node_A
 

@@ -13,6 +13,7 @@ def get_node(
         np.dot(group_C, tric_basis),
     )
     Metal_file = read.pdb(Metal_file)
+
     Metal_count = 1
     zero_lines = new_node_A.shape[0]
     df_node = pd.DataFrame()

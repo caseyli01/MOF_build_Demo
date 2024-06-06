@@ -7,7 +7,7 @@ sys.path.append('.')
 read files
 '''
 class read:
-    def pdb(filename):
+    def npdb(filename):
         inputfile = str(filename)
         outputfile = re.sub(r"\..*$", "", inputfile)
         with open(inputfile, "r") as fp:
@@ -44,6 +44,66 @@ class read:
             names=["Atom_label", "Residue", "Res_number", "x", "y", "z", "Note"],
         )
         return data
+    
+    def pdb(filename):
+        inputfile = str(filename)
+        outputfile = re.sub(r"\..*$", "", inputfile)
+        with open(inputfile, "r") as fp:
+            content = fp.readlines()
+            linesnumber = len(content)
+        lines = []
+        with open(outputfile + ".txt", "w") as fp_w:
+            for i in range(linesnumber):
+                values = content[i].split() if content[i].strip() != "" else None
+                if values is None:
+                    continue
+                if len(values)==11:
+                    if values[0] == "ATOM" or values[0] == "HETATM":
+                        value1 = values[2]  # atom_label
+                        value2 = values[3]  # res_name
+                        value3 = float(values[5])  # x
+                        value4 = float(values[6])  # y
+                        value5 = float(values[7])  # z
+                        value6 = values[10]  # atom_note
+                        value7 = int(values[4])
+                        newline = "%7s%7s%5d%8.3f%8.3f%8.3f%7s" % (
+                            value1,
+                            value2,
+                            value7,
+                            value3,
+                            value4,
+                            value5,
+                            value6,
+                        )
+
+                        lines.append(newline + "\n")
+                elif len(values)==12:
+                    if values[0] == "ATOM" or values[0] == "HETATM":
+                        value1 = values[2]  # atom_label
+                        value2 = values[3]  # res_name
+                        value3 = float(values[6])  # x
+                        value4 = float(values[7])  # y
+                        value5 = float(values[8])  # z
+                        value6 = values[11]  # atom_note
+                        value7 = int(values[5])
+                        newline = "%7s%7s%5d%8.3f%8.3f%8.3f%7s" % (
+                            value1,
+                            value2,
+                            value7,
+                            value3,
+                            value4,
+                            value5,
+                            value6,
+                        )
+                        lines.append(newline + "\n")
+            fp_w.writelines(lines)
+        data = pd.read_csv(
+            outputfile + ".txt",
+            sep="\s+",
+            names=["Atom_label", "Residue", "Res_number", "x", "y", "z", "Note"],
+        )
+        return data
+
 
     def read_axis_from_lib(libfile):
         with open(libfile, "r") as f:
