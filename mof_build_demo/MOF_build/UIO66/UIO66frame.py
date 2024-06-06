@@ -130,7 +130,7 @@ class Frame:
         solution_1_2, arr_1_2, solution_1_3, arr_1_3 = read.read_axis_from_lib(
             self.axis_lib
         )
-        local_pdb = read.lib(self.local_pdb)
+        local_pdb = read.pdb(self.local_pdb)
         axis1 = self.tdx  # ATTENTION
         axis2 = self.tdy
         # pre_process.get_axis2(solution_1_2,arr_1_2,solution_1_3,arr_1_3)
