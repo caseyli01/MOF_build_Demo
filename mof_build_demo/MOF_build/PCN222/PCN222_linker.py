@@ -44,14 +44,16 @@ def get_linker(
     )
     Co = 0.5*(O1+O4) #center of O2 O3; beginning point
     #short_OO_basis_vector = np.linalg.norm(O2 - O1) * np.array([t_basis[0], t_basis[0]])
-    short_OO_basis_vector = np.linalg.norm(O2 - O1) * np.array([t_basis[0], t_basis[0],t_basis[0]])
-    long_OO_basis_vector = np.linalg.norm(O3 - O1) * np.array([t_basis[1], t_basis[2],t_basis[1]-t_basis[2]])
+    #short_OO_basis_vector = np.linalg.norm(O2 - O1) * np.array([t_basis[0], t_basis[0],t_basis[0]])
+    #long_OO_basis_vector = np.linalg.norm(O3 - O1) * np.array([t_basis[1], t_basis[2],t_basis[1]-t_basis[2]])
     df_linker = pd.DataFrame()
+    short_OO_basis_vector = np.linalg.norm(O2 - O1) * np.array([t_basis[0]])
+    long_OO_basis_vector = np.linalg.norm(O3 - O1) * np.array([t_basis[1]])
 
-    for i in range(3):  # 3 for faces
+    for i in range(6):  # 3 for 3 faces
         if len(tric_points_c[i]) > 0:
-            r1_vector_in_frame = normalize_vector(short_OO_basis_vector[i, :])
-            r2_vector_in_frame = normalize_vector(long_OO_basis_vector[i, :])
+            r1_vector_in_frame = normalize_vector(short_OO_basis_vector[0, :])
+            r2_vector_in_frame = normalize_vector(long_OO_basis_vector[0, :])
             r1_vector_in_linker = normalize_vector(O2 - O1)  # short O-O
             r2_vector_in_linker = normalize_vector(O3 - O1)  # LONG O-O
             
@@ -66,6 +68,11 @@ def get_linker(
             new_linker = rotate.rotate_twice_linker(
                 df_input, beginning_point, v2_file, v2_frame, v1_file, v1_frame
             )
+            if i >0 :
+                q_60i=rotate.calculate_q_rotation_with_axis_degree(t_basis[0],i*np.pi/3)
+                new_linker = rotate.get_rotated_array(new_linker,q_60i)
+           
+
             
                     # rotated_new_linker = new_linker-center_of_new_linker # make Co in beginning
             linker_count = 1  # count number WILL be modified in df_all

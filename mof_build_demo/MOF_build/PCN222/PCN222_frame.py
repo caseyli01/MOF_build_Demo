@@ -91,14 +91,23 @@ class Frame:
         # group_A = pre_process.zoom_points(group_A,self.x_scalar,self.y_scalar,self.z_scalar)
         # group_B = pre_process.zoom_points(group_B,self.x_scalar,self.y_scalar,self.z_scalar)
         # carte_points_c_dx = pre_process.zoom_points(points_c_linker_dx,self.x_scalar,self.y_scalar,self.z_scalar)
-        carte_points_c_AACC = pre_process.zoom_points(
-            linker_c_AACC, self.x_scalar, self.y_scalar, self.z_scalar
+        carte_points_c_AACC1 = pre_process.zoom_points(
+            linker_c_AACC1, self.x_scalar, self.y_scalar, self.z_scalar
         )
-        carte_points_c_AABB = pre_process.zoom_points(
-            linker_c_AABB, self.x_scalar, self.y_scalar, self.z_scalar
+        carte_points_c_AABB1 = pre_process.zoom_points(
+            linker_c_AABB1, self.x_scalar, self.y_scalar, self.z_scalar
         )
-        carte_points_c_BBCC = pre_process.zoom_points(
-            linker_c_BBCC, self.x_scalar, self.y_scalar, self.z_scalar
+        carte_points_c_BBCC1 = pre_process.zoom_points(
+            linker_c_BBCC1, self.x_scalar, self.y_scalar, self.z_scalar
+        )
+        carte_points_c_AACC2 = pre_process.zoom_points(
+            linker_c_AACC2, self.x_scalar, self.y_scalar, self.z_scalar
+        )
+        carte_points_c_AABB2 = pre_process.zoom_points(
+            linker_c_AABB2, self.x_scalar, self.y_scalar, self.z_scalar
+        )
+        carte_points_c_BBCC2 = pre_process.zoom_points(
+            linker_c_BBCC2, self.x_scalar, self.y_scalar, self.z_scalar
         )
      
         # carte_points_c_dxy = pre_process.zoom_points(points_c_linker_dxy,self.x_scalar,self.y_scalar,self.z_scalar)
@@ -120,11 +129,15 @@ class Frame:
         )
 
         carte_points_c = []
-        carte_points_c.append(carte_points_c_AABB)
-        carte_points_c.append(carte_points_c_BBCC)
-        carte_points_c.append(carte_points_c_AACC)
+        carte_points_c.append(carte_points_c_AABB1)
+        carte_points_c.append(carte_points_c_BBCC2)
+        carte_points_c.append(carte_points_c_AACC1)
+        carte_points_c.append(carte_points_c_AABB2)
+        carte_points_c.append(carte_points_c_BBCC1)
+        carte_points_c.append(carte_points_c_AACC2)
 
-       
+        carte_points_ABC=np.vstack((group_A,group_B,group_C))
+        
         print(
             "\npointsA number:  "
             + str(group_A.shape[0])
@@ -135,50 +148,39 @@ class Frame:
             + "\nallpoints number:  "
             + str(group_A.shape[0]+group_B.shape[0]+group_C.shape[0])
         )
-        return  carte_points, group_A, group_B, group_C, carte_points_c
+        return  carte_points_ABC, group_A, group_B, group_C, carte_points_c
 
     def node_learn_from_template(self):
         solution_1_2, arr_1_2, solution_1_3, arr_1_3 = read.read_axis_from_lib(
             self.axis_lib
         )
         local_pdb = read.pdb(self.local_pdb)
-        axis1 = self.dx  # ATTENTION
-        axis2 = pre_process.get_axis2(solution_1_2, arr_1_2, solution_1_3, arr_1_3)
+        #axis1 = self.dx  # ATTENTION 
+        #axis2 = pre_process.get_axis2(solution_1_2, arr_1_2, solution_1_3, arr_1_3)
         # axis3 = np.cross(axis1, axis2)
 
-        point_Al = local_pdb.loc[0, ["x", "y", "z"]].to_numpy()
-        p1, p2, p3 = (
-            local_pdb.loc[1, ["x", "y", "z"]].to_numpy() - point_Al,
-            local_pdb.loc[2, ["x", "y", "z"]].to_numpy() - point_Al,
-            local_pdb.loc[3, ["x", "y", "z"]].to_numpy() - point_Al,
-        )
-        p1, p2, p3 = normalize_vector(p1), normalize_vector(p2), normalize_vector(p3)
-        arr = np.vstack((p1, p2, p3))
-        V1, V2 = np.dot(solution_1_2, arr), np.dot(solution_1_3, arr)
+        
+        p1,p2,p3,p4 = (local_pdb.loc[61, ['x','y','z']].to_numpy(),
+                local_pdb.loc[52, ['x','y','z']].to_numpy(),
+                local_pdb.loc[25, ['x','y','z']].to_numpy(),
+                local_pdb.loc[16, ['x','y','z']].to_numpy(),
+                ) 
+        V1=p2-p1
+        V2=p4-p3
+        center_point=0.5*(p2+p1)
         V1, V2 = normalize_vector(V1), normalize_vector(V2)
 
-        Al_node = (
-            local_pdb.loc[:, ["x", "y", "z"]].to_numpy() - point_Al
-        )  # MOVE center (Al this case) to (0,0,0)
-        q1 = rotate.calculate_q_rotation_with_vectors(V1, axis1)
-        q_V2 = quaternion.from_vector_part(V2)
-        new_q_V2 = q1 * q_V2
-        new_V2 = quaternion.as_vector_part(new_q_V2)
+        
+        v1_file , v2_file = V1, V2
+        v1_frame = self.tric_basis[1]+self.tric_basis[2] # ATTENTION  defined by lib file making process
+        v2_frame = self.tric_basis[0] # ATTENTION 
 
-        q2 = rotate.calculate_q_rotation_with_vectors(new_V2, axis2)
-        # q3 = quaternion.from_float_array([0,0,0,-1])
-        # dy dz rotate pi
-        # q3 = rotate.calculate_q_rotation_with_axis_degree(axis2,np.pi)*rotate.calculate_q_rotation_with_axis_degree(axis3,np.pi)
-        q_A = q2 * q1
-        # q_B = q3*q2*q1
 
-        new_node_A = rotate.get_rotated_array(Al_node, q_A)
-        # new_node_B = rotate.get_rotated_array(Al_node,q_B)
-
-        a, b, c = self.tric_basis[0], self.tric_basis[1], self.tric_basis[2]
+        new_node_A = rotate.rotate_twice_linker(local_pdb,center_point,v2_file,v2_frame,v1_file,v1_frame)
         
         angle = np.pi/3
-        q_rotate = rotate.calculate_q_rotation_with_axis_degree(a, angle)
+        q_rotate = rotate.calculate_q_rotation_with_axis_degree(self.tric_basis[0], angle)
+        
         #new_node_A = rotate.get_rotated_array(new_node_A, q_nodeA)
         ## q_nodeB = rotate.calculate_q_rotation_with_axis_degree(a, angle + 0.5 * np.pi)
         #yz_mirror_matrix = np.array([[1, 0, 0], [0, -1, 0], [0, 0, -1]])
@@ -186,7 +188,7 @@ class Frame:
         new_node_B = rotate.get_rotated_array(new_node_A, q_rotate)
         new_node_C = rotate.get_rotated_array(new_node_B, q_rotate)
 
-        return q_rotate,new_node_A, new_node_B,new_node_C #q_rotate may be unneeded
+        return new_node_A, new_node_C,new_node_B #q_rotate may be unneeded
 
 if __name__ == "__main__":
     print('test')
@@ -201,7 +203,7 @@ if __name__ == "__main__":
     tric_basis = rotate.coordinate_transfer(any_tdx, any_tdy, any_tdz, carte_basis)
     x_num, y_num, z_num, x_scalar, y_scalar, z_scalar = 1,1,1,1,1,1
     libpath='D:\OneDrive - KTH\data\code\MOF_build_Demo\mof_build_demo\MOF_build\lib'
-    node_axis_lib, node_local_pdb, cut_lib_pdb = libpath+'/MIL53_lib_axisAl.lib',libpath+'/MIL53_lib_nodeAl.lib',libpath+'/MIL53_lib_cut.lib' 
+    node_axis_lib, node_local_pdb, cut_lib_pdb = libpath+'/PCN222_lib_axisZr.lib',libpath+'/PCN222_lib_nodeZr.lib',libpath+'/PCN222_lib_cut.lib' 
     frame = Frame(
             x_num, y_num, z_num, x_scalar, y_scalar, z_scalar, dx, dy, dz, tric_basis,node_axis_lib, node_local_pdb
         )
