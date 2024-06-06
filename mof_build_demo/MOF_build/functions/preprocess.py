@@ -54,8 +54,8 @@ class pre_process:
         )
         return overlapped_array
 
-    def find_solution(pAl1, pAl2, pAl1_1, pAl1_2, pAl1_3):
-        Al1_Al2 = pAl2 - pAl1
+    def find_solution(pAl1, pAl1_1, pAl1_2, pAl1_3,vAl_Al):
+        Al1_Al2 = vAl_Al
         vAl1_Al2 = normalize_vector(Al1_Al2)
         v12_1, v12_2, v12_3 = pAl1_1 - pAl1, pAl1_2 - pAl1, pAl1_3 - pAl1
         v12_1, v12_2, v12_3 = (
@@ -66,6 +66,7 @@ class pre_process:
         arr_1_2 = np.vstack((v12_1, v12_2, v12_3))
         arr_1_2 = arr_1_2.astype(np.float64)
         vAl1_Al2 = vAl1_Al2.astype(np.float64)
+
         solution_1_2 = np.dot(vAl1_Al2, np.linalg.inv(arr_1_2))
         return solution_1_2, arr_1_2
 

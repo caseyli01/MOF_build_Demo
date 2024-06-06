@@ -85,6 +85,32 @@ class rotate:
         q_rotate = q2 * q1
         new_array = rotate.get_rotated_array(arr, q_rotate)
         return new_array
+    def get_q_rotate_twice_linker(
+        df_input, beginning_point, v1_file, v1_frame, v2_file, v2_frame
+    ):
+        """
+        we need to rotate an object twice to make sure the position and posture is right,
+        the first is rotation from vector to vector directly,
+        the second is rotation along self-axis, angle is calculated in this step which introduces precision loss
+        """
+        arr = (
+            df_input.loc[:, ["x", "y", "z"]].to_numpy() - beginning_point
+        )  # MOVE center (Al this case) to (0,0,0)
+        q0 = rotate.calculate_q_rotation_with_vectors(v1_file, v1_frame)
+        q1=q0
+        #if (q0 == quaternion.from_float_array([1,0,0,0]) and (np.dot(v1_file,v1_frame)<0)):
+        #        q1 = quaternion.from_float_array([-1,0,0,0])
+        #else:
+        #        q1 = q0
+        q_V2 = quaternion.from_vector_part(v2_file)
+        new_q_V2 = q1 * q_V2
+        new_V2_file = quaternion.as_vector_part(new_q_V2)
+        angle = rotate.calculate_angle_rad(v1_frame, new_V2_file, v2_frame)
+        q2 = rotate.calculate_q_rotation_with_axis_degree(v1_frame, angle)
+        # q2 = rotate.calculate_q_rotation_with_vectors(new_V2_file,v2_frame)
+        q_rotate = q2 * q1
+        new_array = rotate.get_rotated_array(arr, q_rotate)
+        return q_rotate
 
     def coordinate_transfer(any_tdx, any_tdy, any_tdz, points):
         """

@@ -1,0 +1,35 @@
+[ defaults ]
+; nbfunc        comb-rule       gen-pairs       fudgeLJ fudgeQQ
+1               2               yes             0.5          0.83333333  
+
+[ atomtypes ]
+; name    at.num    mass    charge ptype  sigma      epsilon
+OW        o           15.9994  0.00000   A     0.317796456   0.652143528  ;tip3p
+HW        h           1.00800  0.00000   A     0.00000e+00   0.00000e+00  ;tip3p
+
+
+
+Ki        Ki         39.10000  0.000000  A     0.31092365     0.71203622 ;K
+Cb        c           0.00000  0.00000   A     3.31521e-01   4.13379e-01 ;HCO3
+HOb       ho          0.00000  0.00000   A     5.37925e-02   1.96648e-02 ;HCO3
+Ob        o           0.00000  0.00000   A     3.04812e-01   6.12119e-01 ;HCO3
+OHb       oh          0.00000  0.00000   A     3.24287e-01   3.89112e-01 ;HCO3
+Cco       c1          0.00000  0.00000   A     3.47896e-01   6.67766e-01 ;CO2
+Oco       o           0.00000  0.00000   A     3.04812e-01   6.12119e-01 ;CO2
+
+
+
+#include "../itp/AL6.itp"
+#include "../itp/OH.itp"
+#include "../itp/CUT.itp"
+#include "../itp/AB.itp"
+#include "../itp/tip3p.itp"
+#include "../itp/K.itp"
+#include "../itp/BCN.itp"
+
+
+[ system ]
+; Name
+
+[ molecules ]
+; Compound     #mols

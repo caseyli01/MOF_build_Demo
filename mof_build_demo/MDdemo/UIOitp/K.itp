@@ -1,0 +1,8 @@
+[ moleculetype ]
+; Name            nrexcl
+K          3
+
+[ atoms ]
+;   nr       type  resnr residue  atom   cgnr    charge       mass  typeB    chargeB      massB
+; residue    1 K rtp K q 1.0
+    1         Ki      1      K      K      1 1.00000000  39.100000   ; qtot 1.000000
