@@ -172,7 +172,7 @@ class Frame:
 
         
         v1_file , v2_file = V1, V2
-        v1_frame = self.tric_basis[1]+self.tric_basis[2] # ATTENTION  defined by lib file making process
+        v1_frame = self.tric_basis[1]-self.tric_basis[2] # ATTENTION  defined by lib file making process
         v2_frame = self.tric_basis[0] # ATTENTION 
 
 
