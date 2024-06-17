@@ -72,7 +72,7 @@ class PCN222tetra:
             dx, dy, dz, tric_basis,self.node_axis_lib, self.node_local_pdb
         )
         carte_points, group_A, group_B, group_C, carte_points_c = frame.get_points()
-        new_node_B, new_node_A,  new_node_C = frame.node_learn_from_template()
+        new_node_A, new_node_B,  new_node_C, q_rotate_local_node = frame.node_learn_from_template()
         tric_points = np.dot(carte_points, tric_basis) 
         
 
@@ -98,7 +98,7 @@ class PCN222tetra:
         """cut"""
         
         df_cut = get_term(
-            self.cut_lib_pdb, self.x_num, self.y_num,self.z_num, self.x_scalar, self.y_scalar, self.z_scalar, tric_basis, carte_points, tric_points, outcut
+            self.cut_lib_pdb, q_rotate_local_node,self.x_num, self.y_num,self.z_num, self.x_scalar, self.y_scalar, self.z_scalar, tric_basis, group_A,group_B,group_C, outcut
         )
         output(outcut,outgro=False,outpdb=False,outxyz=True)
 
@@ -141,7 +141,7 @@ class PCN222tetra:
             dx, dy, dz, tric_basis,self.node_axis_lib, self.node_local_pdb
         )
         carte_points, group_A, group_B, group_C, carte_points_c = frame.get_points()
-        new_node_B, new_node_A,  new_node_C = frame.node_learn_from_template()
+        new_node_A, new_node_B,  new_node_C , q_rotate_local_node = frame.node_learn_from_template()
         tric_points = np.dot(carte_points, tric_basis) 
         
 

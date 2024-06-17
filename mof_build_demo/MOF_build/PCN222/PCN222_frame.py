@@ -113,10 +113,6 @@ class Frame:
         # carte_points_c_dxy = pre_process.zoom_points(points_c_linker_dxy,self.x_scalar,self.y_scalar,self.z_scalar)
         # carte_points_c_dxz = pre_process.zoom_points(points_c_linker_dxz,self.x_scalar,self.y_scalar,self.z_scalar)
         # carte_points_c_dyz = pre_process.zoom_points(points_c_linker_dyz,self.x_scalar,self.y_scalar,self.z_scalar)
-
-        
-
-       
         
         group_A = pre_process.zoom_points(
             group_A, self.x_scalar, self.y_scalar, self.z_scalar
@@ -162,33 +158,34 @@ class Frame:
         
         p1,p2,p3,p4 = (local_pdb.loc[61, ['x','y','z']].to_numpy(),
                 local_pdb.loc[52, ['x','y','z']].to_numpy(),
-                local_pdb.loc[25, ['x','y','z']].to_numpy(),
+                local_pdb.loc[34, ['x','y','z']].to_numpy(),
                 local_pdb.loc[16, ['x','y','z']].to_numpy(),
                 ) 
         V1=p2-p1
-        V2=p4-p3
+        V2=p3-p4
         center_point=0.5*(p2+p1)
         V1, V2 = normalize_vector(V1), normalize_vector(V2)
+        
 
         
         v1_file , v2_file = V1, V2
-        v1_frame = self.tric_basis[1]-self.tric_basis[2] # ATTENTION  defined by lib file making process
+        v1_frame = self.tric_basis[1]+self.tric_basis[2] # ATTENTION  defined by lib file making process
         v2_frame = self.tric_basis[0] # ATTENTION 
-
-
-        new_node_A = rotate.rotate_twice_linker(local_pdb,center_point,v2_file,v2_frame,v1_file,v1_frame)
         
-        angle = np.pi/3
+        new_node_B = rotate.rotate_twice_linker(local_pdb,center_point,v2_file,v2_frame,v1_file,v1_frame)
+        q_rotate_local_node = rotate.get_q_rotate_twice_linker(local_pdb,center_point,v2_file,v2_frame,v1_file,v1_frame)
+        angle = -1*np.pi/3
         q_rotate = rotate.calculate_q_rotation_with_axis_degree(self.tric_basis[0], angle)
         
         #new_node_A = rotate.get_rotated_array(new_node_A, q_nodeA)
         ## q_nodeB = rotate.calculate_q_rotation_with_axis_degree(a, angle + 0.5 * np.pi)
         #yz_mirror_matrix = np.array([[1, 0, 0], [0, -1, 0], [0, 0, -1]])
         #new_node_B = np.dot(new_node_A, yz_mirror_matrix)
-        new_node_B = rotate.get_rotated_array(new_node_A, q_rotate)
-        new_node_C = rotate.get_rotated_array(new_node_B, q_rotate)
-
-        return new_node_A, new_node_C,new_node_B #q_rotate may be unneeded
+        new_node_A = rotate.get_rotated_array(new_node_B, q_rotate)
+        new_node_C = rotate.get_rotated_array(new_node_A, q_rotate)
+        
+        #q_rotate_local_node to rotate cut as well
+        return new_node_A, new_node_B, new_node_C, q_rotate_local_node #q_rotate_local_node to rotate cut as well
 
 if __name__ == "__main__":
     print('test')
