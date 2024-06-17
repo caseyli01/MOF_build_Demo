@@ -18,16 +18,20 @@ class save:
         new_df = pd.DataFrame()
         for i in range(len(residues)):
             df = df_all[df_all["Residue"] == residues[i]].reset_index(drop=True)
-            df["Res_number"] = df.index // res_count[i] + total_num[-1]
-            total_num.append(len(df) // res_count[i] + total_num[-1])
+            
             if residues[i]=='ZRR':
-                print(str(residues[i]) + "   " + str(6*(len(df) // res_count[i])))
+                res_count[i] = 9
+                print('ZRR' + "   " + str((len(df) // 9)))
             elif residues[i]=='OMM':
-                print(str(residues[i]) + "   " + str(4*(len(df) // res_count[i])))
+                res_count[i] = 1
+                print('OMM' + "   " + str((len(df) // 1)))
             elif residues[i]=='OHH':
-                print(str(residues[i]) + "   " + str(4*(len(df) // res_count[i])))
+                res_count[i] = 2
+                print('OHH' + "   " + str((len(df) // 2)))
             else:
                 print(str(residues[i]) + "   " + str(len(df) // res_count[i]))
+            df["Res_number"] = df.index // res_count[i] + total_num[-1]
+            total_num.append(len(df) // res_count[i] + total_num[-1])
             new_df = pd.concat([new_df, df], ignore_index=True, join="outer")
         new_df.to_csv(str(outfilename) + ".txt", sep="\t", header=None, index=False)
         return new_df

@@ -7,6 +7,7 @@ sys.path.append('.')
 read files
 '''
 class read:
+    
     def npdb(filename):
         inputfile = str(filename)
         outputfile = re.sub(r"\..*$", "", inputfile)
