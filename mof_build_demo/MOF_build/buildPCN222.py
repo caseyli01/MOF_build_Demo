@@ -80,7 +80,7 @@ class PCN222tetra:
             self.node_local_pdb, group_A, group_B,group_C,tric_basis, new_node_A, new_node_B, new_node_C,outnode
         )
         
-        output(outnode, outgro=False,outpdb=False,outxyz=True)
+        output(outnode, outgro=True,outpdb=False,outxyz=True)
 
         """linker"""  # pdTCPP 2 4 7 1 TCP #51 55 58 61
 
@@ -100,11 +100,11 @@ class PCN222tetra:
         df_cut = get_term(
             self.cut_lib_pdb, q_rotate_local_node,self.x_num, self.y_num,self.z_num, self.x_scalar, self.y_scalar, self.z_scalar, tric_basis, group_A,group_B,group_C, outcut
         )
-        output(outcut,outgro=False,outpdb=False,outxyz=True)
+        output(outcut,outgro=True,outpdb=False,outxyz=True)
 
         """all"""
         residues, res_count = fetch.reslist_resnum(
-            self.node_local_pdb, self.cut_lib_pdb,self.linker_pdb,1,2,1,linker_order=3
+            self.node_local_pdb, self.cut_lib_pdb,self.linker_pdb,1,8,1,linker_order=3
         )
         print(residues, res_count)
         df_all = save.all(df_node,  df_cut,df_linker, outall, residues, res_count)

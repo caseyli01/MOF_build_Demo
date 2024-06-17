@@ -156,10 +156,10 @@ class Frame:
         # axis3 = np.cross(axis1, axis2)
 
         
-        p1,p2,p3,p4 = (local_pdb.loc[61, ['x','y','z']].to_numpy(),
-                local_pdb.loc[52, ['x','y','z']].to_numpy(),
-                local_pdb.loc[34, ['x','y','z']].to_numpy(),
-                local_pdb.loc[16, ['x','y','z']].to_numpy(),
+        p1,p2,p3,p4 = (local_pdb.loc[45, ['x','y','z']].to_numpy(),
+                local_pdb.loc[36, ['x','y','z']].to_numpy(),
+                local_pdb.loc[18, ['x','y','z']].to_numpy(),
+                local_pdb.loc[0, ['x','y','z']].to_numpy(),
                 ) 
         V1=p2-p1
         V2=p3-p4
