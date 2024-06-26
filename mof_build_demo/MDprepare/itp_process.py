@@ -69,7 +69,7 @@ def top_gen(itp_file,middlelines,outtopname,input_res_num):
 
     newstart = end + 1
 
-    with open("MDdemo/itp/linker.itp", "w") as fp:
+    with open("linker.itp", "w") as fp:
         fp.writelines(lines[newstart:])
 
     target_lines.append("\n")
@@ -103,8 +103,8 @@ def top_gen(itp_file,middlelines,outtopname,input_res_num):
     )
 
 
-    newpath = os.path.abspath ( '')+'/MDdemo/mdfiles/'   # input file
-    os.makedirs(newpath,exist_ok=True)
+    #newpath = os.path.abspath ( '')+'/MDdemo/mdfiles/'   # input file
+    #os.makedirs(newpath,exist_ok=True)
 
-    with open(newpath+outtopname, "w") as f:
+    with open(outtopname, "w") as f:
         f.writelines(newtop)

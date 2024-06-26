@@ -1,0 +1,231 @@
+TITLE     jag_H2TCPP_opt_B3LYP-D3_6-31Gss.01
+REMARK   4      COMPLIES WITH FORMAT V. 3.0, 1-DEC-2006
+REMARK 888
+REMARK 888 WRITTEN BY MAESTRO (A PRODUCT OF SCHRODINGER, LLC)
+HETATM    1  N1  TCP     0      49.183  61.180  61.465  1.00  0.00           N  
+HETATM    2  C1  TCP     0      49.147  62.335  60.798  1.00  0.00           C  
+HETATM    3  C2  TCP     0      49.124  60.118  60.661  1.00  0.00           C  
+HETATM    4  C3  TCP     0      49.043  62.012  59.434  1.00  0.00           C  
+HETATM    5  C4  TCP     0      49.029  60.610  59.348  1.00  0.00           C  
+HETATM    6  N2  TCP     0      49.324  63.158  63.738  1.00  0.00           N  
+HETATM    7  C5  TCP     0      49.299  63.991  62.686  1.00  0.00           C  
+HETATM    8  C6  TCP     0      49.426  63.855  64.879  1.00  0.00           C  
+HETATM    9  C7  TCP     0      49.461  65.222  64.561  1.00  0.00           C  
+HETATM   10  C8  TCP     0      49.381  65.308  63.168  1.00  0.00           C  
+HETATM   11  N3  TCP     0      49.447  60.915  65.742  1.00  0.00           N  
+HETATM   12  C9  TCP     0      49.490  61.976  66.549  1.00  0.00           C  
+HETATM   13  C10 TCP     0      49.471  59.761  66.410  1.00  0.00           C  
+HETATM   14  C11 TCP     0      49.544  61.484  67.865  1.00  0.00           C  
+HETATM   15  C12 TCP     0      49.534  60.083  67.776  1.00  0.00           C  
+HETATM   16  N4  TCP     0      49.289  58.938  63.474  1.00  0.00           N  
+HETATM   17  C13 TCP     0      49.241  58.240  62.330  1.00  0.00           C  
+HETATM   18  C14 TCP     0      49.371  58.105  64.521  1.00  0.00           C  
+HETATM   19  C15 TCP     0      49.369  56.786  64.038  1.00  0.00           C  
+HETATM   20  C16 TCP     0      49.287  56.873  62.645  1.00  0.00           C  
+HETATM   21  C17 TCP     0      49.205  63.669  61.298  1.00  0.00           C  
+HETATM   22  C18 TCP     0      49.156  58.730  60.992  1.00  0.00           C  
+HETATM   23  C19 TCP     0      49.447  58.426  65.909  1.00  0.00           C  
+HETATM   24  C20 TCP     0      49.491  63.363  66.217  1.00  0.00           C  
+HETATM   25  C21 TCP     0      49.027  55.782  57.832  1.00  0.00           C  
+HETATM   26  C22 TCP     0      50.258  56.198  58.380  1.00  0.00           C  
+HETATM   27  C23 TCP     0      50.299  57.168  59.399  1.00  0.00           C  
+HETATM   28  C24 TCP     0      49.109  57.742  59.894  1.00  0.00           C  
+HETATM   29  C25 TCP     0      47.876  57.334  59.339  1.00  0.00           C  
+HETATM   30  C26 TCP     0      47.835  56.360  58.321  1.00  0.00           C  
+HETATM   31  C27 TCP     0      49.150  66.898  58.427  1.00  0.00           C  
+HETATM   32  C28 TCP     0      48.246  65.821  58.317  1.00  0.00           C  
+HETATM   33  C29 TCP     0      48.258  64.775  59.259  1.00  0.00           C  
+HETATM   34  C30 TCP     0      49.177  64.784  60.330  1.00  0.00           C  
+HETATM   35  C31 TCP     0      50.077  65.866  60.446  1.00  0.00           C  
+HETATM   36  C32 TCP     0      50.066  66.913  59.501  1.00  0.00           C  
+HETATM   37  C33 TCP     0      49.686  66.223  69.452  1.00  0.00           C  
+HETATM   38  C34 TCP     0      48.689  66.331  68.459  1.00  0.00           C  
+HETATM   39  C35 TCP     0      48.629  65.401  67.402  1.00  0.00           C  
+HETATM   40  C36 TCP     0      49.561  64.345  67.319  1.00  0.00           C  
+HETATM   41  C37 TCP     0      50.560  64.241  68.311  1.00  0.00           C  
+HETATM   42  C38 TCP     0      50.622  65.171  69.368  1.00  0.00           C  
+HETATM   43  C39 TCP     0      49.681  55.199  68.777  1.00  0.00           C  
+HETATM   44  C40 TCP     0      49.251  56.483  69.173  1.00  0.00           C  
+HETATM   45  C41 TCP     0      49.162  57.532  68.235  1.00  0.00           C  
+HETATM   46  C42 TCP     0      49.504  57.318  66.882  1.00  0.00           C  
+HETATM   47  C43 TCP     0      49.928  56.031  66.486  1.00  0.00           C  
+HETATM   48  C44 TCP     0      50.014  54.981  67.423  1.00  0.00           C  
+HETATM   49  O1  TCP     0      47.884  54.408  56.263  1.00  0.00           O  
+HETATM   50  C45 TCP     0      48.990  54.743  56.744  1.00  0.00           C  
+HETATM   51  O2  TCP     0      50.674  67.110  71.420  1.00  0.00           O  
+HETATM   52  C46 TCP     0      49.750  67.215  70.582  1.00  0.00           C  
+HETATM   53  O3  TCP     0      48.877  68.110  70.649  1.00  0.00           O1-
+HETATM   54  O4  TCP     0      50.162  52.955  69.401  1.00  0.00           O  
+HETATM   55  C47 TCP     0      49.797  54.089  69.787  1.00  0.00           C  
+HETATM   56  O5  TCP     0      49.527  54.337  70.985  1.00  0.00           O1-
+HETATM   57  O6  TCP     0      48.324  67.932  56.459  1.00  0.00           O1-
+HETATM   58  C48 TCP     0      49.131  68.009  57.412  1.00  0.00           C  
+HETATM   59  O7  TCP     0      49.917  68.973  57.556  1.00  0.00           O  
+HETATM   60  O8  TCP     0      50.072  54.255  56.348  1.00  0.00           O1-
+HETATM   61  H1  TCP     0      49.260  61.117  62.480  1.00  0.00           H  
+HETATM   62  H2  TCP     0      48.985  62.706  58.611  1.00  0.00           H  
+HETATM   63  H3  TCP     0      48.959  60.024  58.444  1.00  0.00           H  
+HETATM   64  H4  TCP     0      49.541  66.046  65.252  1.00  0.00           H  
+HETATM   65  H5  TCP     0      49.387  66.214  62.579  1.00  0.00           H  
+HETATM   66  H6  TCP     0      49.404  60.980  64.726  1.00  0.00           H  
+HETATM   67  H7  TCP     0      49.585  62.071  68.772  1.00  0.00           H  
+HETATM   68  H8  TCP     0      49.566  59.390  68.602  1.00  0.00           H  
+HETATM   69  H9  TCP     0      49.423  55.881  64.625  1.00  0.00           H  
+HETATM   70  H10 TCP     0      49.269  56.046  61.952  1.00  0.00           H  
+HETATM   71  H11 TCP     0      51.173  55.760  58.008  1.00  0.00           H  
+HETATM   72  H12 TCP     0      51.254  57.469  59.807  1.00  0.00           H  
+HETATM   73  H13 TCP     0      46.953  57.763  59.701  1.00  0.00           H  
+HETATM   74  H14 TCP     0      46.890  56.045  57.903  1.00  0.00           H  
+HETATM   75  H15 TCP     0      47.541  65.809  57.498  1.00  0.00           H  
+HETATM   76  H16 TCP     0      47.558  63.960  59.151  1.00  0.00           H  
+HETATM   77  H17 TCP     0      50.787  65.894  61.259  1.00  0.00           H  
+HETATM   78  H18 TCP     0      50.759  67.738  59.588  1.00  0.00           H  
+HETATM   79  H19 TCP     0      47.973  67.138  68.518  1.00  0.00           H  
+HETATM   80  H20 TCP     0      47.859  65.501  66.651  1.00  0.00           H  
+HETATM   81  H21 TCP     0      51.287  63.443  68.268  1.00  0.00           H  
+HETATM   82  H22 TCP     0      51.387  65.088  70.128  1.00  0.00           H  
+HETATM   83  H23 TCP     0      48.998  56.654  70.210  1.00  0.00           H  
+HETATM   84  H24 TCP     0      48.841  58.508  68.566  1.00  0.00           H  
+HETATM   85  H25 TCP     0      50.201  55.850  65.457  1.00  0.00           H  
+HETATM   86  H26 TCP     0      50.346  53.999  67.114  1.00  0.00           H  
+CONECT    1    2    3   61
+CONECT    2    1    4   21
+CONECT    2   21
+CONECT    3    1    5   22
+CONECT    3   22
+CONECT    4    2    5   62
+CONECT    4    5
+CONECT    5    3    4   63
+CONECT    5    4
+CONECT    6    7    8
+CONECT    6    7
+CONECT    7    6   10   21
+CONECT    7    6
+CONECT    8    6    9   24
+CONECT    8   24
+CONECT    9    8   10   64
+CONECT    9   10
+CONECT   10    7    9   65
+CONECT   10    9
+CONECT   11   12   13   66
+CONECT   12   11   14   24
+CONECT   12   14
+CONECT   13   11   15   23
+CONECT   13   15
+CONECT   14   12   15   67
+CONECT   14   12
+CONECT   15   13   14   68
+CONECT   15   13
+CONECT   16   17   18
+CONECT   16   17
+CONECT   17   16   20   22
+CONECT   17   16
+CONECT   18   16   19   23
+CONECT   18   23
+CONECT   19   18   20   69
+CONECT   19   20
+CONECT   20   17   19   70
+CONECT   20   19
+CONECT   21    2    7   34
+CONECT   21    2
+CONECT   22    3   17   28
+CONECT   22    3
+CONECT   23   13   18   46
+CONECT   23   18
+CONECT   24    8   12   40
+CONECT   24    8
+CONECT   25   26   30   50
+CONECT   25   30
+CONECT   26   25   27   71
+CONECT   26   27
+CONECT   27   26   28   72
+CONECT   27   26
+CONECT   28   22   27   29
+CONECT   28   29
+CONECT   29   28   30   73
+CONECT   29   28
+CONECT   30   25   29   74
+CONECT   30   25
+CONECT   31   32   36   58
+CONECT   31   36
+CONECT   32   31   33   75
+CONECT   32   33
+CONECT   33   32   34   76
+CONECT   33   32
+CONECT   34   21   33   35
+CONECT   34   35
+CONECT   35   34   36   77
+CONECT   35   34
+CONECT   36   31   35   78
+CONECT   36   31
+CONECT   37   38   42   52
+CONECT   37   42
+CONECT   38   37   39   79
+CONECT   38   39
+CONECT   39   38   40   80
+CONECT   39   38
+CONECT   40   24   39   41
+CONECT   40   41
+CONECT   41   40   42   81
+CONECT   41   40
+CONECT   42   37   41   82
+CONECT   42   37
+CONECT   43   44   48   55
+CONECT   43   48
+CONECT   44   43   45   83
+CONECT   44   45
+CONECT   45   44   46   84
+CONECT   45   44
+CONECT   46   23   45   47
+CONECT   46   47
+CONECT   47   46   48   85
+CONECT   47   46
+CONECT   48   43   47   86
+CONECT   48   43
+CONECT   49   50
+CONECT   49   50
+CONECT   50   25   49   60
+CONECT   50   49
+CONECT   51   52
+CONECT   51   52
+CONECT   52   37   51   53
+CONECT   52   51
+CONECT   53   52
+CONECT   54   55
+CONECT   54   55
+CONECT   55   43   54   56
+CONECT   55   54
+CONECT   56   55
+CONECT   57   58
+CONECT   58   31   57   59
+CONECT   58   59
+CONECT   59   58
+CONECT   59   58
+CONECT   60   50
+CONECT   61    1
+CONECT   62    4
+CONECT   63    5
+CONECT   64    9
+CONECT   65   10
+CONECT   66   11
+CONECT   67   14
+CONECT   68   15
+CONECT   69   19
+CONECT   70   20
+CONECT   71   26
+CONECT   72   27
+CONECT   73   29
+CONECT   74   30
+CONECT   75   32
+CONECT   76   33
+CONECT   77   35
+CONECT   78   36
+CONECT   79   38
+CONECT   80   39
+CONECT   81   41
+CONECT   82   42
+CONECT   83   44
+CONECT   84   45
+CONECT   85   47
+CONECT   86   48
+END   
