@@ -28,6 +28,9 @@ class save:
             elif residues[i]=='OHH':
                 res_count[i] = 2
                 print('OHH' + "   " + str((len(df) // 2)))
+            elif residues[i]=='mcn':
+                res_count[i] = 6
+                print('mcn' + "   " + str((len(df) // 6)))
             else:
                 print(str(residues[i]) + "   " + str(len(df) // res_count[i]))
             df["Res_number"] = df.index // res_count[i] + total_num[-1]
